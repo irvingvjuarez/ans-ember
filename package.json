@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "dependencies": {
+    "vitest": "^0.25.1"
+  }
+}
