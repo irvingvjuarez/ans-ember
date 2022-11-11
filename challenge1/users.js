@@ -1,4 +1,4 @@
-usr:@midudev eme:mi@gmail.com psw:123456 age:38 loc:bcn fll:82
+export const users = `usr:@midudev eme:mi@gmail.com psw:123456 age:38 loc:bcn fll:82
 
 fll:111 eme:yrfa@gmail.com usr:@codember
 psw:123456 age:21 loc:World
@@ -715,4 +715,4 @@ eme:giroz@gmail.com
 
 psw:11133 loc:Canary
 fll:333 usr:@pheralb
-eme:pheralb@gmail.com
+eme:pheralb@gmail.com`
