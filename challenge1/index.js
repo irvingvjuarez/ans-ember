@@ -12,4 +12,8 @@ const usersProps = usersArr.map(user => {
 
 const validUsers = usersProps.filter(props => requiredProps.every(prop => prop in props))
 
-console.log(validUsers.length)
+const size = validUsers.length
+const finalValidUser = validUsers[size - 1].usr
+const finalAnswer = `submit ${size}${finalValidUser}`
+
+console.log(finalAnswer)
