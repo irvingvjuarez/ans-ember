@@ -28,6 +28,4 @@ const decodedMessage = messageTextContent.split(" ")
 		return decodedWord
 	})
 
-console.log({
-	decodedMessage
-})
+console.log(decodedMessage)
