@@ -28,4 +28,5 @@ const decodedMessage = messageTextContent.split(" ")
 		return decodedWord
 	})
 
-console.log(decodedMessage)
+const answer = "submit " + decodedMessage.join(" ")
+console.log(answer)
