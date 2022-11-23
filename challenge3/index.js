@@ -1,8 +1,13 @@
 import fs from "fs"
 
 const sequences = []
-let firstColor = "", secondColor = "", sequenceCount = 0, currentSequence = []
 const colors = JSON.parse(fs.readFileSync("./colors.json"))
+const longestSequence = {
+	sequence: [],
+	size: 0
+}
+
+let firstColor = "", secondColor = "", sequenceCount = 0, currentSequence = []
 
 function resetValues(color) {
 	// console.log({
@@ -47,4 +52,12 @@ for(let color of colors) {
 	}
 }
 
-console.log(sequences)
+sequences.forEach(sequence => {
+	const currentSize = sequence.length + 1
+	if(currentSize > longestSequence.size) {
+		longestSequence.size = currentSize;
+		longestSequence.sequence = sequence
+	}
+})
+
+console.log(longestSequence)
