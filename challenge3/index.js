@@ -2,23 +2,11 @@ import fs from "fs"
 
 const sequences = []
 const colors = JSON.parse(fs.readFileSync("./colors.json"))
-const longestSequence = {
-	sequence: [],
-	size: 0
-}
-
+const longestSequence = { sequence: [], size: 0 }
 let firstColor = "", secondColor = "", sequenceCount = 0, currentSequence = []
 
 function resetValues(color) {
-	// console.log({
-	// 	firstColor,
-	// 	secondColor,
-	// 	sequenceCount,
-	// 	currentSequence
-	// })
-
-	firstColor = color,
-	secondColor = ""
+	firstColor = color
 	sequenceCount = 1
 
 	sequences.push(currentSequence)
@@ -28,15 +16,15 @@ function resetValues(color) {
 function updateValues(color) {
 	currentSequence.push(color)
 	sequenceCount ++
+
+	return color
 }
 
 for(let color of colors) {
 	if (sequenceCount === 0) {
-		firstColor = color;
-		updateValues(color)
+		firstColor = updateValues(color)
 	} else if (color !== firstColor && sequenceCount === 1) {
-		secondColor = color
-		updateValues(color)
+		secondColor = updateValues(color)
 	} else if (sequenceCount > 1) {
 		const isInFirstColor = sequenceCount % 2 === 0;
 
