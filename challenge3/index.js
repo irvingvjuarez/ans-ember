@@ -1,36 +1,50 @@
 import fs from "fs"
 
-let firstColor = "", secondColor = "", sequenceCount = 0
+const sequences = []
+let firstColor = "", secondColor = "", sequenceCount = 0, currentSequence = []
 const colors = JSON.parse(fs.readFileSync("./colors.json"))
 
-function printValues() {
-	console.log({
-		firstColor,
-		secondColor,
-		sequenceCount
-	})
+function resetValues(color) {
+	// console.log({
+	// 	firstColor,
+	// 	secondColor,
+	// 	sequenceCount,
+	// 	currentSequence
+	// })
+
+	firstColor = color,
+	secondColor = ""
+	sequenceCount = 1
+
+	sequences.push(currentSequence)
+	currentSequence = [firstColor]
+}
+
+function updateValues(color) {
+	currentSequence.push(color)
+	sequenceCount ++
 }
 
 for(let color of colors) {
 	if (sequenceCount === 0) {
 		firstColor = color;
-		sequenceCount ++
+		updateValues(color)
 	} else if (color !== firstColor && sequenceCount === 1) {
 		secondColor = color
-		sequenceCount ++
+		updateValues(color)
 	} else if (sequenceCount > 1) {
 		const isInFirstColor = sequenceCount % 2 === 0;
 
 		if (isInFirstColor && color !== firstColor) {
-			printValues()
-			sequenceCount = 0
-			break;
+			resetValues(color)
+			// break;
 		} else if (!isInFirstColor && color !== secondColor) {
-			printValues()
-			sequenceCount = 0
-			break;
+			resetValues(color)
+			// break;
 		} else {
-			sequenceCount ++
+			updateValues(color)
 		}
 	}
 }
+
+console.log(sequences)
