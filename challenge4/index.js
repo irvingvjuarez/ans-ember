@@ -23,4 +23,10 @@ for(let i = 11098; i <= 98123; i++) {
 	if(isValueValid) validPasswords.push(i)
 }
 
-console.log(validPasswords)
+const validPasswordsSize = validPasswords.length;
+const fiftyFiveValue = validPasswords[55]
+
+console.log({
+	validPasswordsSize,
+	fiftyFiveValue
+})
