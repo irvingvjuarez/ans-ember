@@ -1,4 +1,4 @@
-const testingArr = [55678, 12555, 55555, 12345, 57775]
+const validPasswords = []
 
 function isValidPassword(number) {
 	let leftNumber = 0
@@ -13,13 +13,14 @@ function isValidPassword(number) {
 
 	const filterByFive = numberArr.filter(char => char === "5")
 	const atLeastTwoFives = filterByFive.length >= 2
-
 	const inRange = rightGreaterThanLeft && atLeastTwoFives
 
-	console.log({
-		number,
-		inRange
-	})
+	return inRange
 }
 
-testingArr.forEach(value => isValidPassword(value))
+for(let i = 11098; i <= 98123; i++) {
+	const isValueValid = isValidPassword(i)
+	if(isValueValid) validPasswords.push(i)
+}
+
+console.log(validPasswords)
