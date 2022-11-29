@@ -1,7 +1,7 @@
 import fs from "fs"
 import { getSurvivor } from "./getSurvivor.js"
 
-const patrons = JSON.parse(fs.readFileSync("./mecenas.json")).map((patron, index) => ({
+let patrons = JSON.parse(fs.readFileSync("./mecenas.json")).map((patron, index) => ({
 	patron, index
 }))
 
@@ -18,6 +18,6 @@ let technologies = [
 	{index: 9}
 ]
 
-technologies = getSurvivor(technologies)
+patrons = getSurvivor(patrons)
 
-console.log(technologies)
+console.log(patrons)
